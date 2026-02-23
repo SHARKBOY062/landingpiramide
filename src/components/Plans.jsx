@@ -1,5 +1,7 @@
 import "../styles/plans.css";
 
+const LOGIN_URL = "https://axiontech.one/login";
+
 function IconCpu() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -104,7 +106,7 @@ export default function Plans() {
         </div>
 
         <p className="plans-footnote">
-          
+          Aviso: Operações no mercado financeiro envolvem risco e volatilidade. Não existe garantia de retorno.
         </p>
       </div>
     </section>
@@ -149,7 +151,7 @@ function PlanCard({ plan }) {
         ))}
       </ul>
 
-      <a className="plan-cta" href="#cta">
+      <a className="plan-cta" href={LOGIN_URL}>
         Acessar plataforma
       </a>
     </article>

@@ -1,5 +1,7 @@
 import "../styles/cta.css";
 
+const LOGIN_URL = "https://axiontech.one/login";
+
 function IconLock() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -48,9 +50,9 @@ export default function CTA() {
           </p>
 
           <div className="cta-actions">
-            <button className="cta-primary" type="button">
-              Solicitar acesso
-            </button>
+            <a className="cta-primary" href={LOGIN_URL}>
+              Acessar plataforma
+            </a>
 
             <a className="cta-secondary" href="#plans">
               Ver planos e ciclos

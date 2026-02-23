@@ -1,12 +1,15 @@
 import "../styles/hero.css";
 
+const LOGIN_URL = "https://axiontech.one/login";
+
 export default function Hero() {
   return (
     <section className="hero" id="top">
       <div className="hero-container">
         <div className="hero-content">
           <span className="badge">
-            Tecnologia • IA • Mercado Financeiro <span className="dot" aria-hidden="true">•</span>{" "}
+            Tecnologia • IA • Mercado Financeiro{" "}
+            <span className="dot" aria-hidden="true">•</span>{" "}
             <strong>100% automatizado</strong>
           </span>
 
@@ -28,17 +31,16 @@ export default function Hero() {
           </ul>
 
           <div className="hero-actions">
-            <a className="primary" href="#cta">
+            <a className="primary" href={LOGIN_URL}>
               Acessar plataforma
             </a>
+
             <a className="secondary" href="#features">
               Ver como funciona
             </a>
           </div>
 
-          <div className="hero-micro">
-            Onde a Inteligência Artificial opera para você.
-          </div>
+          <div className="hero-micro">Onde a Inteligência Artificial opera para você.</div>
         </div>
 
         <div className="hero-visual" aria-hidden="true">
@@ -68,11 +70,7 @@ export default function Hero() {
 
                 <div className="dashboard-chart">
                   {Array.from({ length: 12 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="chart-bar"
-                      style={{ height: `${32 + i * 4}%` }}
-                    />
+                    <div key={i} className="chart-bar" style={{ height: `${32 + i * 4}%` }} />
                   ))}
                 </div>
 
