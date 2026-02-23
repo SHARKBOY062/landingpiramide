@@ -1,0 +1,71 @@
+.header{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 14px clamp(18px, 6vw, 100px);
+  background: rgba(255,255,255,.86);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(15,23,42,.10);
+}
+
+.header-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+/* LOGO */
+.brand{
+  display:flex;
+  align-items:center;
+  text-decoration:none;
+}
+
+.brand-logo{
+  height: 28px;          /* ✅ tamanho correto desktop */
+  width: auto;
+  max-width: 160px;      /* evita estourar */
+  display:block;
+  object-fit: contain;
+}
+
+/* CTA */
+.header-cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  padding: 11px 16px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 1000;
+  color: #04150a;
+  background: linear-gradient(180deg, var(--primary), #16a34a);
+  border: 1px solid rgba(34,197,94,.26);
+  box-shadow: 0 14px 40px rgba(34,197,94,.18);
+  transition: transform .2s ease, box-shadow .2s ease;
+  white-space: nowrap;
+}
+
+.header-cta:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 18px 52px rgba(34,197,94,.22);
+}
+
+@media (max-width: 720px){
+  .header{
+    padding: 12px 18px;
+  }
+  .brand-logo{
+    height: 24px;        /* ✅ tamanho correto mobile */
+    max-width: 140px;
+  }
+  .header-cta{
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 12.8px;
+  }
+}

@@ -1,0 +1,225 @@
+.market{
+  padding: 90px clamp(18px, 6vw, 100px);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(34,197,94,.14), transparent 42%),
+    radial-gradient(circle at 85% 20%, rgba(34,197,94,.10), transparent 48%),
+    #ffffff;
+  border-top: 1px solid rgba(15,23,42,.10);
+  border-bottom: 1px solid rgba(15,23,42,.10);
+}
+
+.market-container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.market-header{
+  max-width: 760px;
+  margin-bottom: 22px;
+}
+
+.market-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(34,197,94,.22);
+  background: rgba(34,197,94,.08);
+  color: rgba(15,23,42,.82);
+  font-weight: 1000;
+  font-size: 12px;
+  letter-spacing: .2px;
+  margin-bottom: 12px;
+}
+
+.market-header h2{
+  font-size: clamp(26px, 3.6vw, 36px);
+  line-height: 1.14;
+  letter-spacing: -0.35px;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.market-header p{
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 14.5px;
+}
+
+.market-badges{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.market-badges .badge{
+  font-size: 12px;
+  color: rgba(15,23,42,.78);
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(15,23,42,.04);
+  border: 1px solid rgba(15,23,42,.10);
+}
+
+.market-badges .badge:nth-child(1),
+.market-badges .badge:nth-child(2){
+  border-color: rgba(34,197,94,.22);
+  background: rgba(34,197,94,.08);
+}
+
+/* ============ TICKER ============ */
+.ticker{
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid rgba(15,23,42,.10);
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 18px 60px rgba(15,23,42,.08);
+}
+
+/* fades */
+.ticker-fade{
+  position:absolute;
+  top:0;
+  width: 90px;
+  height: 100%;
+  z-index: 3;
+  pointer-events:none;
+}
+
+.ticker-fade.left{
+  left:0;
+  background: linear-gradient(90deg, rgba(255,255,255,.95), rgba(255,255,255,0));
+}
+
+.ticker-fade.right{
+  right:0;
+  background: linear-gradient(270deg, rgba(255,255,255,.95), rgba(255,255,255,0));
+}
+
+/* track */
+.ticker-track{
+  display:flex;
+  gap: 14px;
+  padding: 18px 16px;
+  animation: tickerScroll 28s linear infinite;
+  will-change: transform;
+}
+
+.ticker:hover .ticker-track{
+  animation-play-state: paused;
+}
+
+@keyframes tickerScroll{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-50%); }
+}
+
+/* item */
+.ticker-item{
+  min-width: 250px;
+  padding: 14px 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(15,23,42,.10);
+  background: rgba(255,255,255,.92);
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.ticker-item:hover{
+  transform: translateY(-2px);
+  border-color: rgba(34,197,94,.22);
+  box-shadow: 0 18px 48px rgba(15,23,42,.10);
+}
+
+.asset-left{
+  display:flex;
+  flex-direction:column;
+  gap: 4px;
+}
+
+.asset-symbol{
+  font-weight: 1000;
+  letter-spacing: .25px;
+  color: rgba(15,23,42,.92);
+  font-size: 14px;
+}
+
+.asset-name{
+  color: rgba(15,23,42,.62);
+  font-size: 12.5px;
+}
+
+.asset-right{
+  text-align:right;
+  display:flex;
+  flex-direction:column;
+  gap: 6px;
+}
+
+.asset-price{
+  font-weight: 1000;
+  color: rgba(15,23,42,.92);
+  font-size: 13.5px;
+}
+
+.asset-change{
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 900;
+}
+
+.asset-change .change-dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: .18;
+  box-shadow: 0 10px 20px rgba(0,0,0,.08);
+}
+
+.asset-change.up{ color: var(--primary); }
+.asset-change.down{ color: #ef4444; }
+
+/* hint + note */
+.ticker-hint{
+  padding: 10px 16px 14px;
+  border-top: 1px solid rgba(15,23,42,.08);
+  color: rgba(15,23,42,.62);
+  font-size: 12px;
+}
+
+.market-note{
+  margin-top: 12px;
+  color: rgba(15,23,42,.58);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .market{
+    padding: 76px 18px;
+  }
+  .ticker-fade{
+    width: 60px;
+  }
+  .ticker-item{
+    min-width: 230px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .ticker-track{
+    animation: none !important;
+    transform: none !important;
+  }
+}
