@@ -1,43 +1,86 @@
 import "../styles/plans.css";
 
-const DAILY_PLANS = [
+function IconCpu() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <rect x="7" y="7" width="10" height="10" rx="2" />
+      <path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3" />
+    </svg>
+  );
+}
+
+function IconPulse() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M3 12h4l2-6 4 12 2-6h6" />
+    </svg>
+  );
+}
+
+function IconShield() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 2 19 6v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4Z" />
+      <path d="M9 12l2 2 4-4" />
+    </svg>
+  );
+}
+
+function IconServer() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <rect x="4" y="4" width="16" height="6" rx="2" />
+      <rect x="4" y="14" width="16" height="6" rx="2" />
+      <path d="M8 7h.01M8 17h.01" />
+      <path d="M12 7h6M12 17h6" />
+    </svg>
+  );
+}
+
+function IconChart() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M4 19V5" />
+      <path d="M4 19h16" />
+      <path d="M7 15l4-4 3 3 5-6" />
+    </svg>
+  );
+}
+
+const PLANS = [
   {
-    title: "Diário 10",
-    investment: "R$ 10",
-    duration: "5 dias",
-    target: "Alvo: até 2% ao dia",
-    featured: false,
-  },
-  {
-    title: "Diário 25",
-    investment: "R$ 25",
-    duration: "5 dias",
-    target: "Alvo: até 2% ao dia",
-    featured: false,
-  },
-  {
-    title: "Diário 50",
+    title: "Plano Mínimo",
     investment: "R$ 50",
-    duration: "5 dias",
-    target: "Alvo: até 2% ao dia",
-    featured: true, // destaque
+    level: "Entrada",
+    tagline: "Comece com o mínimo e acompanhe a operação no painel.",
+    featured: false,
+    chips: ["Acesso ao painel", "IA 24/7"],
   },
   {
-    title: "Diário 100",
-    investment: "R$ 100",
-    duration: "5 dias",
-    target: "Alvo: até 2% ao dia",
+    title: "Plano 1.000",
+    investment: "R$ 1.000",
+    level: "Intermediário",
+    tagline: "Maior alocação para acompanhar ciclos com mais amplitude operacional.",
+    featured: true,
+    chips: ["Mais escolhido", "Controle de risco"],
+  },
+  {
+    title: "Plano até 10.000",
+    investment: "Até R$ 10.000",
+    level: "Alta alocação",
+    tagline: "Para quem busca alocar mais capital mantendo disciplina algorítmica.",
     featured: false,
+    chips: ["Infra high-performance", "Monitoramento contínuo"],
   },
 ];
 
-const FIXED_PLAN = {
-  title: "Fixo 10D",
-  investment: "R$ 500 a R$ 1.000",
-  duration: "10 dias",
-  target: "Bônus alvo: R$ 100",
-  featured: false,
-};
+const FEATURES = [
+  { Icon: IconCpu, text: "IA 100% automatizada (análise + execução algorítmica)" },
+  { Icon: IconPulse, text: "Leitura de mercado em tempo real e identificação de padrões" },
+  { Icon: IconShield, text: "Gestão de risco sistemática com parâmetros operacionais" },
+  { Icon: IconServer, text: "Infraestrutura estável e escalável (alta disponibilidade)" },
+  { Icon: IconChart, text: "Painel com métricas, indicadores e transparência operacional" },
+];
 
 export default function Plans() {
   return (
@@ -45,107 +88,65 @@ export default function Plans() {
       <div className="plans-container">
         <header className="plans-header">
           <span className="plans-kicker">Planos</span>
-          <h2>Planos de operação automatizada</h2>
+          <h2>Três níveis de alocação, a mesma IA operacional</h2>
 
           <p className="plans-subtitle">
             Todos os planos utilizam a <strong>mesma Inteligência Artificial</strong>, operando de forma{" "}
-            <strong>100% automatizada</strong>. A diferença entre eles está no ciclo e no nível de capital alocado.
+            <strong>100% automatizada</strong>. A diferença está no nível de capital alocado e no acompanhamento do ciclo
+            dentro do painel.
           </p>
         </header>
 
-        <div className="plans-grid">
-          {/* Planos diários */}
-          <div className="plans-group">
-            <div className="group-head">
-              <h3>Planos Diários</h3>
-              <p>
-                Ciclo curto de <strong>5 dias</strong> com alvo operacional de <strong>até 2% ao dia</strong>.
-              </p>
-            </div>
-
-            <div className="group-grid">
-              {DAILY_PLANS.map((p) => (
-                <PlanCard
-                  key={p.title}
-                  title={p.title}
-                  investment={p.investment}
-                  duration={p.duration}
-                  target={p.target}
-                  featured={p.featured}
-                  features={[
-                    "IA operando automaticamente em tempo real",
-                    "Execução algorítmica orientada por dados e padrões",
-                    "Gestão de risco e controle operacional",
-                    "Acompanhamento no painel (métricas e indicadores)",
-                    "Resultados variam conforme condições de mercado",
-                  ]}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Plano fixo */}
-          <div className="plans-group">
-            <div className="group-head">
-              <h3>Plano 10 Dias</h3>
-              <p>
-                Ciclo de <strong>10 dias</strong> com <strong>bônus alvo</strong> e acompanhamento completo.
-              </p>
-            </div>
-
-            <div className="group-grid single">
-              <PlanCard
-                title={FIXED_PLAN.title}
-                investment={FIXED_PLAN.investment}
-                duration={FIXED_PLAN.duration}
-                target={FIXED_PLAN.target}
-                featured={false}
-                features={[
-                  "IA 100% automatizada (análise + execução)",
-                  "Infraestrutura de alta performance",
-                  "Processamento de dados em larga escala",
-                  "Relatório de ciclo e visão operacional",
-                  "Operações envolvem risco (não há garantia)",
-                ]}
-                wide
-              />
-            </div>
-          </div>
+        <div className="plans-grid" role="list" aria-label="Planos disponíveis">
+          {PLANS.map((p) => (
+            <PlanCard key={p.title} plan={p} />
+          ))}
         </div>
 
         <p className="plans-footnote">
-          Aviso: Operações no mercado financeiro envolvem risco e volatilidade. Não existe garantia de retorno. Os
-          percentuais e bônus apresentados devem ser tratados como metas/alvos operacionais e podem variar conforme as
-          condições de mercado, liquidez e execução.
+          Aviso: Operações no mercado financeiro envolvem risco e volatilidade. Não existe garantia de retorno. Qualquer
+          meta operacional pode variar conforme condições de mercado, liquidez e execução.
         </p>
       </div>
     </section>
   );
 }
 
-function PlanCard({ title, investment, duration, target, features, featured, wide }) {
+function PlanCard({ plan }) {
   return (
-    <article className={`plan-card ${featured ? "featured" : ""} ${wide ? "wide" : ""}`}>
-      {featured && <div className="ribbon">Mais escolhido</div>}
+    <article className={`plan-card ${plan.featured ? "featured" : ""}`} role="listitem">
+      {plan.featured && <div className="ribbon">Mais escolhido</div>}
 
       <div className="plan-top">
         <div className="plan-title">
-          <h4>{title}</h4>
-          <div className="chips">
-            <span className="chip">{duration}</span>
-            <span className="chip chip-strong">{target}</span>
+          <h4>{plan.title}</h4>
+
+          <div className="chips" aria-label="Detalhes do plano">
+            <span className="chip">{plan.level}</span>
+            {plan.chips?.map((c) => (
+              <span key={c} className="chip chip-strong">
+                {c}
+              </span>
+            ))}
           </div>
         </div>
 
         <div className="plan-price">
           <span className="label">Investimento</span>
-          <span className="value">{investment}</span>
+          <span className="value">{plan.investment}</span>
         </div>
       </div>
 
-      <ul className="plan-list">
-        {features.map((item, idx) => (
-          <li key={idx}>{item}</li>
+      <p className="plan-tagline">{plan.tagline}</p>
+
+      <ul className="plan-list" aria-label="Recursos do plano">
+        {FEATURES.map((f, idx) => (
+          <li key={idx}>
+            <span className="feat-ico" aria-hidden="true">
+              <f.Icon />
+            </span>
+            <span className="feat-text">{f.text}</span>
+          </li>
         ))}
       </ul>
 
