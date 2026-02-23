@@ -104,8 +104,7 @@ export default function Plans() {
         </div>
 
         <p className="plans-footnote">
-          Aviso: Operações no mercado financeiro envolvem risco e volatilidade. Não existe garantia de retorno. Qualquer
-          meta operacional pode variar conforme condições de mercado, liquidez e execução.
+          
         </p>
       </div>
     </section>
